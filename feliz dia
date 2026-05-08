@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Feliz Día de la Madre 💖</title>
+
+<!-- FUENTE ELEGANTE -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins', sans-serif;
+    min-height:100vh;
+    overflow-x:hidden;
+    background: linear-gradient(180deg,#ffb6c1,#ff8fab,#ffc2d1);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+    position:relative;
+}
+
+/* FONDO BRILLO */
+body::before{
+    content:'';
+    position:absolute;
+    width:500px;
+    height:500px;
+    background:rgba(255,255,255,0.2);
+    border-radius:50%;
+    top:-150px;
+    left:-150px;
+    filter:blur(60px);
+}
+
+body::after{
+    content:'';
+    position:absolute;
+    width:400px;
+    height:400px;
+    background:rgba(255,255,255,0.15);
+    border-radius:50%;
+    bottom:-100px;
+    right:-100px;
+    filter:blur(60px);
+}
+
+/* CORAZONES */
+.hearts{
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    overflow:hidden;
+    z-index:1;
+}
+
+.heart{
+    position:absolute;
+    bottom:-50px;
+    color:rgba(255,255,255,0.7);
+    animation: floatHeart linear infinite;
+    font-size:25px;
+}
+
+@keyframes floatHeart{
+    0%{
+        transform:translateY(0) scale(1);
+        opacity:0;
+    }
+    20%{
+        opacity:1;
+    }
+    100%{
+        transform:translateY(-120vh) scale(1.8);
+        opacity:0;
+    }
+}
+
+/* TARJETA PRINCIPAL */
+.card{
+    width:100%;
+    max-width:430px;
+    background:rgba(255,255,255,0.18);
+    backdrop-filter:blur(14px);
+    border:1px solid rgba(255,255,255,0.25);
+    border-radius:30px;
+    padding:28px;
+    text-align:center;
+    position:relative;
+    z-index:5;
+    box-shadow:
+    0 10px 40px rgba(0,0,0,0.2),
+    inset 0 0 15px rgba(255,255,255,0.2);
+
+    transform-style:preserve-3d;
+    animation:entrada 2s ease;
+}
+
+/* EFECTO 3D */
+.card:hover{
+    transform:rotateY(5deg) rotateX(5deg);
+    transition:1s;
+}
+
+@keyframes entrada{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.title{
+    font-family:'Great Vibes', cursive;
+    font-size:55px;
+    color:white;
+    text-shadow:0 4px 10px rgba(0,0,0,0.25);
+    margin-bottom:10px;
+}
+
+.subtitle{
+    color:white;
+    font-size:16px;
+    margin-bottom:20px;
+    font-weight:300;
+}
+
+/* CARTA ANIMADA */
+.letter{
+    background:rgba(255,255,255,0.25);
+    border-radius:20px;
+    padding:22px;
+    margin-top:20px;
+    animation:flotar 4s ease-in-out infinite;
+    box-shadow:0 5px 20px rgba(0,0,0,0.12);
+}
+
+@keyframes flotar{
+    0%{transform:translateY(0);}
+    50%{transform:translateY(-8px);}
+    100%{transform:translateY(0);}
+}
+
+.message{
+    color:white;
+    font-size:15px;
+    line-height:1.9;
+    text-align:justify;
+}
+
+/* FRASE DESTACADA */
+.frase{
+    margin-top:25px;
+    color:white;
+    font-size:16px;
+    font-weight:600;
+    line-height:1.7;
+    padding:18px;
+    border-radius:18px;
+    background:rgba(255,255,255,0.18);
+}
+
+/* CORAZÓN CENTRAL */
+.big-heart{
+    font-size:75px;
+    animation:latido 1.2s infinite;
+    margin:10px 0 15px;
+}
+
+@keyframes latido{
+    0%{transform:scale(1);}
+    50%{transform:scale(1.18);}
+    100%{transform:scale(1);}
+}
+
+/* BOTON */
+.btn{
+    margin-top:25px;
+    display:inline-block;
+    padding:14px 26px;
+    border-radius:40px;
+    background:white;
+    color:#ff4d88;
+    text-decoration:none;
+    font-weight:600;
+    box-shadow:0 5px 15px rgba(0,0,0,0.15);
+    transition:0.4s;
+}
+
+.btn:hover{
+    transform:scale(1.06);
+}
+
+/* PIE */
+.footer{
+    margin-top:18px;
+    color:white;
+    font-size:13px;
+    opacity:0.9;
+}
+
+/* RESPONSIVE */
+@media(max-width:480px){
+
+    .title{
+        font-size:44px;
+    }
+
+    .message{
+        font-size:14px;
+        line-height:1.8;
+    }
+
+    .frase{
+        font-size:14px;
+    }
+
+    .card{
+        padding:22px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- MUSICA -->
+<audio autoplay loop>
+    <source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+<!-- CORAZONES -->
+<div class="hearts">
+    <div class="heart" style="left:5%; animation-duration:8s;">💖</div>
+    <div class="heart" style="left:15%; animation-duration:12s;">💗</div>
+    <div class="heart" style="left:30%; animation-duration:10s;">💕</div>
+    <div class="heart" style="left:45%; animation-duration:14s;">💞</div>
+    <div class="heart" style="left:60%; animation-duration:9s;">💓</div>
+    <div class="heart" style="left:75%; animation-duration:11s;">💘</div>
+    <div class="heart" style="left:90%; animation-duration:13s;">❤️</div>
+</div>
+
+<!-- TARJETA -->
+<div class="card">
+
+    <div class="title">Feliz Día Mamá 💐</div>
+
+    <div class="subtitle">
+        Para todas las madres hermosas del mundo 🌸
+    </div>
+
+    <div class="big-heart">❤️</div>
+
+    <!-- CARTA -->
+    <div class="letter">
+
+        <div class="message">
+            Mamá, hoy quiero agradecerte por cada abrazo,
+            cada consejo y cada sacrificio que hiciste por mí.
+            Tu amor es el regalo más grande que Dios me dio,
+            porque incluso en los días difíciles,
+            siempre encontré en ti una sonrisa,
+            una palabra de aliento y un corazón dispuesto
+            a cuidarme sin importar nada.
+
+            <br><br>
+
+            Gracias por enseñarme a luchar,
+            por nunca rendirte y por demostrarme
+            que el amor verdadero sí existe.
+            No hay riqueza más grande que tener
+            una madre como tú,
+            porque tu cariño ilumina mi vida
+            y hace más hermoso cada momento.
+
+            <br><br>
+
+            Hoy celebramos a todas esas mujeres valientes,
+            nobles y maravillosas que entregan su vida
+            por sus hijos con amor infinito.
+            Que Dios bendiga cada uno de sus días,
+            les regale salud, felicidad y millones de motivos
+            para sonreír siempre. 💖
+        </div>
+
+    </div>
+
+    <!-- FRASE -->
+    <div class="frase">
+        “Todos tienen una madre, pero ninguna como la mía.
+        Porque en sus brazos encontré mi hogar,
+        en su voz encontré paz
+        y en su corazón encontré el amor más puro
+        que existe en este mundo.” 🌷
+    </div>
+
+    <a href="#" class="btn">
+        💕 Feliz Día de la Madre 💕
+    </a>
+
+    <div class="footer">
+        Hecho con amor para todas las mamitas 🌸
+    </div>
+
+</div>
+
+</body>
+</html>
