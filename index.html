@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Feliz Día de la Madre 💖</title>
 
-<!-- FUENTE ELEGANTE -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
@@ -19,16 +18,15 @@
 body{
     font-family:'Poppins', sans-serif;
     min-height:100vh;
-    overflow-x:hidden;
+    overflow:hidden;
     background: linear-gradient(180deg,#ffb6c1,#ff8fab,#ffc2d1);
     display:flex;
     justify-content:center;
     align-items:center;
-    padding:20px;
     position:relative;
 }
 
-/* FONDO BRILLO */
+/* FONDO */
 body::before{
     content:'';
     position:absolute;
@@ -51,6 +49,37 @@ body::after{
     bottom:-100px;
     right:-100px;
     filter:blur(60px);
+}
+
+/* PANTALLA INICIAL */
+#inicio{
+    position:absolute;
+    z-index:20;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+}
+
+.corazon-inicio{
+    font-size:120px;
+    cursor:pointer;
+    animation:latido 1.2s infinite;
+    filter:drop-shadow(0 0 20px rgba(255,255,255,0.7));
+}
+
+.texto-tocame{
+    margin-top:10px;
+    color:white;
+    font-size:28px;
+    font-weight:600;
+    text-shadow:0 0 10px rgba(0,0,0,0.2);
+}
+
+@keyframes latido{
+    0%{transform:scale(1);}
+    50%{transform:scale(1.15);}
+    100%{transform:scale(1);}
 }
 
 /* CORAZONES */
@@ -86,7 +115,7 @@ body::after{
     }
 }
 
-/* TARJETA PRINCIPAL */
+/* TARJETA */
 .card{
     width:100%;
     max-width:430px;
@@ -102,24 +131,18 @@ body::after{
     0 10px 40px rgba(0,0,0,0.2),
     inset 0 0 15px rgba(255,255,255,0.2);
 
-    transform-style:preserve-3d;
-    animation:entrada 2s ease;
+    display:none;
+    animation:aparecer 1.5s ease;
 }
 
-/* EFECTO 3D */
-.card:hover{
-    transform:rotateY(5deg) rotateX(5deg);
-    transition:1s;
-}
-
-@keyframes entrada{
+@keyframes aparecer{
     from{
         opacity:0;
-        transform:translateY(40px);
+        transform:scale(0.8);
     }
     to{
         opacity:1;
-        transform:translateY(0);
+        transform:scale(1);
     }
 }
 
@@ -138,20 +161,18 @@ body::after{
     font-weight:300;
 }
 
-/* CARTA ANIMADA */
+.big-heart{
+    font-size:75px;
+    animation:latido 1.2s infinite;
+    margin:10px 0 15px;
+}
+
 .letter{
     background:rgba(255,255,255,0.25);
     border-radius:20px;
     padding:22px;
     margin-top:20px;
-    animation:flotar 4s ease-in-out infinite;
     box-shadow:0 5px 20px rgba(0,0,0,0.12);
-}
-
-@keyframes flotar{
-    0%{transform:translateY(0);}
-    50%{transform:translateY(-8px);}
-    100%{transform:translateY(0);}
 }
 
 .message{
@@ -161,7 +182,6 @@ body::after{
     text-align:justify;
 }
 
-/* FRASE DESTACADA */
 .frase{
     margin-top:25px;
     color:white;
@@ -173,20 +193,6 @@ body::after{
     background:rgba(255,255,255,0.18);
 }
 
-/* CORAZÓN CENTRAL */
-.big-heart{
-    font-size:75px;
-    animation:latido 1.2s infinite;
-    margin:10px 0 15px;
-}
-
-@keyframes latido{
-    0%{transform:scale(1);}
-    50%{transform:scale(1.18);}
-    100%{transform:scale(1);}
-}
-
-/* BOTON */
 .btn{
     margin-top:25px;
     display:inline-block;
@@ -196,41 +202,28 @@ body::after{
     color:#ff4d88;
     text-decoration:none;
     font-weight:600;
-    box-shadow:0 5px 15px rgba(0,0,0,0.15);
-    transition:0.4s;
 }
 
-.btn:hover{
-    transform:scale(1.06);
-}
-
-/* PIE */
 .footer{
     margin-top:18px;
     color:white;
     font-size:13px;
-    opacity:0.9;
 }
 
-/* RESPONSIVE */
 @media(max-width:480px){
 
     .title{
-        font-size:44px;
+        font-size:42px;
     }
 
-    .message{
-        font-size:14px;
-        line-height:1.8;
+    .texto-tocame{
+        font-size:24px;
     }
 
-    .frase{
-        font-size:14px;
+    .corazon-inicio{
+        font-size:100px;
     }
 
-    .card{
-        padding:22px;
-    }
 }
 
 </style>
@@ -239,9 +232,20 @@ body::after{
 <body>
 
 <!-- MUSICA -->
-<audio autoplay loop>
+<audio id="musica" loop>
     <source src="musica.mp3" type="audio/mpeg">
 </audio>
+
+<!-- INICIO -->
+<div id="inicio" onclick="abrirCarta()">
+
+    <div class="corazon-inicio">❤️</div>
+
+    <div class="texto-tocame">
+        Tócame 💖
+    </div>
+
+</div>
 
 <!-- CORAZONES -->
 <div class="hearts">
@@ -254,8 +258,8 @@ body::after{
     <div class="heart" style="left:90%; animation-duration:13s;">❤️</div>
 </div>
 
-<!-- TARJETA -->
-<div class="card">
+<!-- CARTA -->
+<div class="card" id="carta">
 
     <div class="title">Feliz Día Mamá 💐</div>
 
@@ -265,7 +269,6 @@ body::after{
 
     <div class="big-heart">❤️</div>
 
-    <!-- CARTA -->
     <div class="letter">
 
         <div class="message">
@@ -282,30 +285,18 @@ body::after{
             Gracias por enseñarme a luchar,
             por nunca rendirte y por demostrarme
             que el amor verdadero sí existe.
-            No hay riqueza más grande que tener
-            una madre como tú,
-            porque tu cariño ilumina mi vida
-            y hace más hermoso cada momento.
 
             <br><br>
 
-            Hoy celebramos a todas esas mujeres valientes,
-            nobles y maravillosas que entregan su vida
-            por sus hijos con amor infinito.
-            Que Dios bendiga cada uno de sus días,
-            les regale salud, felicidad y millones de motivos
+            Que Dios bendiga cada uno de tus días,
+            te regale salud, felicidad y millones de motivos
             para sonreír siempre. 💖
         </div>
 
     </div>
 
-    <!-- FRASE -->
     <div class="frase">
-        “Todos tienen una madre, pero ninguna como la mía.
-        Porque en sus brazos encontré mi hogar,
-        en su voz encontré paz
-        y en su corazón encontré el amor más puro
-        que existe en este mundo.” 🌷
+        “Todos tienen una madre, pero ninguna como la mía.” 🌷
     </div>
 
     <a href="#" class="btn">
@@ -313,10 +304,24 @@ body::after{
     </a>
 
     <div class="footer">
-        Hecho con amor para todas las mamitas 🌸
+        Hecho con amor 🌸
     </div>
 
 </div>
+
+<script>
+
+function abrirCarta(){
+
+    document.getElementById("inicio").style.display = "none";
+
+    document.getElementById("carta").style.display = "block";
+
+    document.getElementById("musica").play();
+
+}
+
+</script>
 
 </body>
 </html>
